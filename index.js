@@ -16,19 +16,16 @@ const forecastItemsContainer = document.querySelector('.forecast-items-container
 
 const apiKey = 'c42070a49bf6a55c38d1362221e517de'
 searchBtn.addEventListener('click', () => {
-    if (cityInput.value.trim() != '') {
+    if (cityInput.value.trim() !== '') {
       updateWeatherInfo(cityInput.value)
-      cityInput.value = ''
-      cityInput.blur()
     }
 });
 cityInput.addEventListener('keydown', (event) => {
     if (event.key == 'Enter' &&
-        cityInput.value.trim() != ''
+        cityInput.value.trim() !== ''
     ) {
-        updateWeatherInfo()
-      cityInput.value = ''
-      cityInput.blur()
+        updateWeatherInfo(cityInput.value)
+  
     }
 })
 async function getFetchData(endPoint, city) {
@@ -66,6 +63,10 @@ async function updateWeatherInfo(city) {
         return
       }
       
+   await updateForecastsInfo(city);
+   showDisplaySection(weatherInfoSection);
+   cityInput.value = '';
+   cityInput.blur();
       const {
         name: country,
         main: { temp, humidity},
