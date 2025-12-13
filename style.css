@@ -11,7 +11,7 @@
 body {
     background: url(photo-1593978301851-40c1849d47d4.jpg);
     width: 100%;
-    height: 100dvh;
+     min-height: 100vh;
     background-size: cover;
     background-position: center;
     display: flex;
